@@ -1,5 +1,5 @@
 FROM ghcr.io/osgeo/gdal:ubuntu-small-3.6.3 as builder
-LABEL maintainer Camptocamp "info@camptocamp.com"
+LABEL maintainer atlantageek "atlantageek@gmail.com"
 SHELL ["/bin/bash", "-o", "pipefail", "-cux"]
 
 RUN --mount=type=cache,target=/var/cache,sharing=locked \
@@ -80,7 +80,8 @@ ENV APACHE_CONFDIR=/etc/apache2 \
     APACHE_PID_FILE=/var/run/apache2/apache2.pid \
     APACHE_LOCK_DIR=/var/lock/apache2 \
     APACHE_LOG_DIR=/var/log/apache2 \
-    MS_MAP_PATTERN=^\\/etc\\/mapserver\\/([^\\.][-_A-Za-z0-9\\.]+\\/{1})*([-_A-Za-z0-9\\.]+\\.map)$
+    #MS_MAP_PATTERN=^\\/etc\\/mapserver\\/([^\\.][-_A-Za-z0-9\\.]+\\/{1})*([-_A-Za-z0-9\\.]+\\.map)$
+    MS_MAP_PATTERN=^/etc/mapserver
 
 RUN --mount=type=cache,target=/var/cache,sharing=locked \
     --mount=type=cache,target=/root/.cache \
