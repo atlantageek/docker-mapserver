@@ -1,3 +1,7 @@
+HOW TO BUILD
+
+ docker build -t atlantageek/mapserver --build-arg MAPSERVER_BRANCH=branch-8-0 .
+
 # Docker image for MapServer
 
 The main Mapfile should be in `/etc/mapserver/`.
