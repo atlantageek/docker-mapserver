@@ -1,0 +1,33 @@
+MAP
+  NAME "MAPSERVER QUICKSTART"
+  EXTENT -137 29 -53 88
+  UNITS DD
+  SHAPEPATH "/home/user/data/natural_earth2/"
+  SIZE 800 600
+
+  IMAGETYPE PNG24
+
+  PROJECTION
+    "init=epsg:4326"
+  END
+
+  WEB
+    METADATA
+      ows_enable_request "*"
+    END
+  END
+
+  LAYER
+    NAME "Admin Countries"
+    STATUS ON
+    TYPE POLYGON
+    DATA "ne_10m_admin_0_countries"
+    CLASS
+      STYLE
+        COLOR 246 241 223
+        OUTLINECOLOR 0 0 0
+      END
+    END
+  END
+
+END

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "browser-xml2js": "^0.4.19",
+    "wms-capabilities": "^0.6.0",
+    "xml2js": "^0.5.0"
+  }
+}
