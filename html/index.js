@@ -32,7 +32,7 @@ async function loadData() {
         
         
         console.log("------")
-        overlays[name]=L.tileLayer.wms(url, {layers:name});
+        overlays[name]=L.tileLayer.wms(url, {layers:name, transparent:true, zIndex:2, format:'image/png'});
         console.log(name + ";" + url);
         
     }
@@ -45,7 +45,7 @@ async function loadData() {
     var map = L.map('map').setView([51.505, -0.09], 13);
     var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',zIndex:1
     }
     )
     baseMaps['OSM']=osm;

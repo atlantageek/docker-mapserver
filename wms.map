@@ -4,7 +4,7 @@ MAXSIZE 4000
 SIZE 800 800
 EXTENT -9583207 3548826 -8999182 4183713
 UNITS meters
-
+IMAGECOLOR "#00FF0000"
 WEB
    METADATA
       "wfs_title" "mapserverdemo"
@@ -26,38 +26,52 @@ PROJECTION
    "init=epsg:3857"
 END
 OUTPUTFORMAT
-  NAME "png_bw"
-  DRIVER "AGG/PNG"
-  MIMETYPE "image/png;mode=8bit,grayscale"
+  NAME "png"
+  DRIVER AGG/PNG
+  MIMETYPE "image/png"
   IMAGEMODE RGB
   EXTENSION "png"
-  TRANSPARENT FALSE
-  FORMATOPTION "PALETTE=grey.txt"
-  FORMATOPTION "PALETTE_FORCE=on"
 END
 
-
 LAYER
-    STATUS DEFAULT
     TYPE POLYGON
-    NAME "h3_polygons"
+    NAME "h3_polygons_a"
     GROUP "h3"
     CONNECTIONTYPE postgis
     CONNECTION "host=host.docker.internal dbname=h3demo user=postgres password=postgres port=5432"
     DATA "geom from pop6 using unique fld using srid=4326"
     CLASS
       STYLE
+         OUTLINECOLOR 255 0 0 
+         WIDTH 3
+      END
+      STYLE
+         COLOR 255 0 0
+         OPACITY 30
+      END
+   END
+  PROJECTION #source
+    "init=epsg:4326"
+  END
+END
+
+LAYER
+    TYPE POLYGON
+    NAME "h3_polygons_b"
+    GROUP "h32"
+    CONNECTIONTYPE postgis
+    CONNECTION "host=host.docker.internal dbname=h3demo user=postgres password=postgres port=5432"
+    DATA "geom from pop8 using unique fld using srid=4326"
+    CLASS
+      STYLE
          OUTLINECOLOR 0 0 255
          WIDTH 3
       END
       STYLE
-         COLOR 255 255 255
-         OPACITY 1
+         COLOR 0 0 255
+         OPACITY 30
       END
    END
-  
-     
-
   PROJECTION #source
     "init=epsg:4326"
   END
@@ -68,3 +82,4 @@ END
 /*
 http://localhost:8080/mapserv?map=/etc/mapserver/wms.map&request=GetMetadata&layers=h3_polygons&service=WMS&request=GetMap&&styles=&format=image%2Fjpeg&transparent=false&version=1.1.1&width=256&height=256&srs=EPSG%3A3857&bbox=-14675.909430753843,6711782.579664759,-9783.93962050256,6716674.54947501
 */
+http://localhost:8080/mapserv?map=/etc/mapserver/wms.map&request=GetMetadata&layer=h3_polygons_a&service=WMS&request=GetMap&layers=h3_polygons_a&styles=&format=image%2Fjpeg&transparent=true&version=1.1.1&width=256&height=256&srs=EPSG%3A3857&bbox=-14675.909430753843,6711782.579664759,-9783.93962050256,6716674.54947501

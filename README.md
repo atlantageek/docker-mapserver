@@ -1,6 +1,9 @@
 HOW TO BUILD
 
  docker build -t atlantageek/mapserver --build-arg MAPSERVER_BRANCH=branch-8-0 .
+ docker run -d --name camptocamp -p 8080:80 --add-host=host.docker.internal:host-gateway --volume=/home/atlantageek/dev/docker-mapserver:/etc/mapserver:rw atlantageek/mapserver
+
+Look at mapserver.conf to fix
 
 # Docker image for MapServer
 

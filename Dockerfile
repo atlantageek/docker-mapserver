@@ -81,7 +81,7 @@ ENV APACHE_CONFDIR=/etc/apache2 \
     APACHE_LOCK_DIR=/var/lock/apache2 \
     APACHE_LOG_DIR=/var/log/apache2 \
     #MS_MAP_PATTERN=^\\/etc\\/mapserver\\/([^\\.][-_A-Za-z0-9\\.]+\\/{1})*([-_A-Za-z0-9\\.]+\\.map)$
-    MS_MAP_PATTERN=^/etc/mapserver
+    MS_MAP_PATTERN=^/etc/mapserver/([^\.][-_A-Za-z0-9\.]+\/{1})*([-_A-Za-z0-9\.]+\.map)$
 
 RUN --mount=type=cache,target=/var/cache,sharing=locked \
     --mount=type=cache,target=/root/.cache \
